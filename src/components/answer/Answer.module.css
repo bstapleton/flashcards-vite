@@ -1,0 +1,20 @@
+.answerItem {
+    @apply mb-4;
+
+    &:last-child {
+        @apply mb-0;
+    }
+}
+
+.answerButton {
+    @apply bg-violet-500 border-violet-500 rounded-lg  transition-colors duration-100;
+
+    &:hover {
+        @apply border-violet-400;
+    }
+}
+
+.selected {
+    @apply bg-violet-400 border-violet-400 rounded-2xl;
+    text-shadow: #1a1a1a 0.05em 0.05em 0.1em;
+}

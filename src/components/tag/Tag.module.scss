@@ -1,0 +1,31 @@
+$colors: (
+        orange,
+        yellow,
+        green,
+        teal,
+        cyan,
+        blue,
+        indigo,
+        purple,
+        pink,
+        red
+);
+
+.tag {
+    @apply list-none;
+    @apply px-2 py-1;
+    @apply rounded-full;
+    @apply text-sm;
+    @apply font-semibold;
+    @apply ml-2;
+
+    &:first-child {
+        @apply ml-0;
+    }
+}
+
+@each $color in $colors {
+    .#{$color} {
+        @apply bg-#{$color}-500 border-#{$color}-500;
+    }
+}

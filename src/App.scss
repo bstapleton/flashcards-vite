@@ -1,0 +1,8 @@
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.submitButton {
+  @apply bg-green-600 hover:bg-green-800 rounded-lg transition-colors duration-100;
+}
