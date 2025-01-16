@@ -39,11 +39,6 @@ const Flashcard = () => {
         }
     }
 
-    const handleAnswerSubmission = () => {
-        let answers: number[] = selectedAnswers;
-        // TODO: submit to API and display scorecard
-    }
-
     const getQuestionTypeName = () => {
         switch (flashcard?.type) {
             case QuestionType.Statement:
@@ -87,6 +82,27 @@ const Flashcard = () => {
         getData();
     }, []);
 
+    async function postAnswers() {
+        try {
+            const result = await fetch(import.meta.env.VITE_API_URL + '/api/flashcards/' + flashcard?.id, {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer ' + import.meta.env.VITE_API_BEARER,
+                    'Content-Type': 'application/json'
+                },
+                cache: 'no-store',
+                body: JSON.stringify({
+                    answers: JSON.parse(localStorage.getItem('selectedAnswers') || '[]')
+                })
+            });
+            const data = await result.json();
+            localStorage.setItem('scorecard', JSON.stringify(data))
+        } catch (error) {
+            setLoading(false);
+        }
+        // TODO: change the UI somehow based on the response
+    }
+
     if (isLoading) return <div>Loading...</div>
 
     if (flashcard) {
@@ -122,7 +138,7 @@ const Flashcard = () => {
                             </ul>
                         </li>
                     </ul>
-                    <button className={'submitButton'}>Submit your answer</button>
+                    <button className={'submitButton'} onClick={postAnswers}>Submit your answer</button>
                 </footer>
             </div>
         )
