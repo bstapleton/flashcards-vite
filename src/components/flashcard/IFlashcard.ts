@@ -13,4 +13,5 @@ export interface IFlashcard {
     answers: IAnswer[]
     tags: ITag[]
     createdAt: Date
+    handleSubmission: (id: number) => void
 }

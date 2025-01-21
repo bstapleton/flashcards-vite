@@ -1,0 +1,13 @@
+@import '../card/Card.module.css';
+
+header {
+    @apply flex justify-between items-center;
+}
+
+.question {
+    @apply text-xl;
+}
+
+.previous {
+    @apply text-lg;
+}

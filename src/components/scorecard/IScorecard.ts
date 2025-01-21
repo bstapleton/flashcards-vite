@@ -16,3 +16,7 @@ export interface IScorecard {
     nextEligibleAt: Date;
     flashcardAnswers: IFlashcardAnswer[];
 }
+
+export interface ScorecardProps {
+    onNextQuestion: () => void;
+}

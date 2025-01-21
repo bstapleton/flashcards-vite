@@ -1,0 +1,39 @@
+.card {
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+
+    header, footer, .body {
+        @apply bg-zinc-800;
+        @apply max-w-4xl;
+        @apply px-6 py-4;
+        @apply border-l-2 border-l-indigo-500;
+        @apply border-r-2 border-r-indigo-500;
+    }
+
+    header {
+        @apply rounded-tl-xl rounded-tr-xl border-t-2 border-t-indigo-500;
+        @apply text-2xl;
+    }
+
+    .body {
+        @apply border-t-2 border-t-indigo-500;
+    }
+
+    footer {
+        @apply border-t-2 border-t-indigo-500;
+        @apply rounded-bl-xl rounded-br-xl border-b-2 border-b-indigo-500;
+
+        button {
+            @apply bg-green-600 hover:bg-green-800 rounded-lg transition-colors duration-100;
+        }
+    }
+
+    .list {
+        @apply list-none mb-2;
+
+        &:last-child {
+            @apply mb-4;
+        }
+    }
+}
