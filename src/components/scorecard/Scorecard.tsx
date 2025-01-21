@@ -2,6 +2,10 @@ import {IScorecard} from "./IScorecard.ts";
 import {IFlashcardAnswer} from "./IFlashcardAnswer.ts";
 import styles from './Scorecard.module.css';
 import {getQuestionTypeName} from "../../types/questionType.ts";
+import {Check} from "../glyphs/check.tsx";
+import {Colour} from "../../types/colour.ts";
+import {Times} from "../glyphs/times.tsx";
+import {Minus} from "../glyphs/minus.tsx";
 
 interface ScorecardProps {
     handleSubmission: () => void
@@ -17,33 +21,48 @@ const Scorecard = ({ handleSubmission, data }: ScorecardProps) => {
         <article className={styles.card}>
             <header>
                 <h2>Your Scorecard</h2>
-                <p>Total points: {data.userCurrentScore}</p>
+                <p>Total points: {data.user_current_score}</p>
             </header>
             <div className={styles.body}>
                 <h3 className={styles.question}>{data.question}</h3>
                 <p>Type: {getQuestionTypeName(data.type)}</p>
                 <p>Correctness: {data.correctness}</p>
                 <p>Score: {data.score}</p>
-                <p>Difficulty when answered: {data.oldDifficulty}</p>
-                <p>New difficulty: {data.newDifficulty}</p>
-                <p>Earliest you'll see this question again: {data.nextEligibleAt ? new Date(Date.parse(data.nextEligibleAt.toString())).toLocaleString() : null}</p>
-                {/* TODO: stylise */}
+                <p>Difficulty when answered: {data.old_difficulty}</p>
+                <p>New difficulty: {data.new_difficulty}</p>
+                <p>Earliest you'll see this question again: {data.next_eligible_at ? new Date(Date.parse(data.next_eligible_at.toString())).toLocaleString() : null}</p>
+            </div>
+            <div className={styles.body}>
+                (<Check symbolOnly={true} small={true} colour={Colour.GREEN} /> correct selection) (<Times symbolOnly={true} small={true} colour={Colour.RED} /> incorrect selection) (<Minus symbolOnly={true} small={true} colour={Colour.YELLOW} /> correct but not selected)
                 <ul>
-                    {data.flashcardAnswers.map((flashcardAnswer: IFlashcardAnswer) => (
-                        <li key={flashcardAnswer.id}>
-                            <p>{flashcardAnswer.text}</p>
-                            <p>{flashcardAnswer.isCorrect}</p>
-                            <p>{flashcardAnswer.wasSelected}</p>
-                            <p>{flashcardAnswer.explanation}</p>
+                    {data.flashcard_answers.map((flashcardAnswer: IFlashcardAnswer) => (
+                        <li key={flashcardAnswer.id} className={styles.answer}>
+                            {flashcardAnswer.was_selected && flashcardAnswer.is_correct ? (
+                                <Check symbolOnly={false} colour={Colour.GREEN} />
+                            ) : null}
+
+                            {flashcardAnswer.was_selected && !flashcardAnswer.is_correct ? (
+                                <Times symbolOnly={false} colour={Colour.RED} />
+                            ) : null}
+
+                            {!flashcardAnswer.was_selected && flashcardAnswer.is_correct ? (
+                                <Minus symbolOnly={false} colour={Colour.YELLOW} />
+                            ) : null}
+                            <div className={styles.text}>
+                                <span className={'font-bold'}>{flashcardAnswer.text}</span>
+                                {flashcardAnswer.explanation ? (
+                                    <span><br />{flashcardAnswer.explanation}</span>
+                                ) : null}
+                            </div>
                         </li>
                     ))}
                 </ul>
             </div>
-            {data.previousAttempt.attemptedAt ?
+            {data.previous_attempt.attemptedAt ?
                 <div className={styles.body}>
                     <h3 className={styles.previous}>Previous attempt</h3>
-                    <p>At: {data.previousAttempt.attemptedAt?.toString()}</p>
-                    <p>Correctness: {data.previousAttempt?.correctness}</p>
+                    <p>At: {data.previous_attempt.attemptedAt.toString()}</p>
+                    <p>Correctness: {data.previous_attempt.correctness}</p>
                 </div>
             : null}
             <footer>

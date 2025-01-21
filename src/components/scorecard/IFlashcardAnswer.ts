@@ -1,7 +1,7 @@
 export interface IFlashcardAnswer {
     id: number;
-    isCorrect: boolean;
-    wasSelected: boolean;
+    is_correct: boolean;
+    was_selected: boolean;
     text: string;
     explanation?: string;
 }

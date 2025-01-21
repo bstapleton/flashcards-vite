@@ -39,8 +39,7 @@ function App() {
                 })
             });
             const data = await result.json();
-            const transformedData = _.mapKeys(data.data, (_value, key) => _.camelCase(key)) as IScorecard;
-            setScorecard(transformedData);
+            setScorecard(data.data);
             setFlashcard(null);
             setLoading(false);
         } catch (error) {

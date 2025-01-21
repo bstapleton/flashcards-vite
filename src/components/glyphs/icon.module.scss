@@ -1,0 +1,46 @@
+.icon {
+    @apply inline;
+    width: 3rem;
+    height: 3rem;
+
+    &.small {
+        width: 2rem;
+        height: 2rem;
+    }
+}
+
+.red {
+    path, g {
+        @apply fill-red-700;
+
+        .background {
+            @apply fill-red-500;
+        }
+    }
+}
+
+.green {
+    path, g {
+        @apply fill-green-700;
+
+        .background {
+            @apply fill-green-500;
+        }
+    }
+}
+
+.yellow {
+    path, g {
+        @apply fill-yellow-500;
+
+        .background {
+            @apply fill-yellow-400;
+        }
+    }
+}
+
+.symbolOnly {
+    .outline {
+        display: none;
+    }
+}

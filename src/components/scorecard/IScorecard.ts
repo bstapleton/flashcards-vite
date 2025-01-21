@@ -8,13 +8,13 @@ export interface IScorecard {
     question: string;
     type: QuestionType;
     correctness: Correctness;
-    previousAttempt: IAttempt;
+    previous_attempt: IAttempt;
     score: number;
-    userCurrentScore: number;
-    oldDifficulty: Difficulty;
-    newDifficulty: Difficulty;
-    nextEligibleAt: Date;
-    flashcardAnswers: IFlashcardAnswer[];
+    user_current_score: number;
+    old_difficulty: Difficulty;
+    new_difficulty: Difficulty;
+    next_eligible_at: Date;
+    flashcard_answers: IFlashcardAnswer[];
 }
 
 export interface ScorecardProps {

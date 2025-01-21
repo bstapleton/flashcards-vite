@@ -12,6 +12,6 @@ The bearer is whatever bearer token the API gives you when you successfully auth
 - Actual auth
   - Login
   - Log out
-- Scorecard UI
+- Finish scorecard UI
 - Error handling
 - Tests
