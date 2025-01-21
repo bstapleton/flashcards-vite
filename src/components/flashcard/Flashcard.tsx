@@ -27,9 +27,9 @@ const Flashcard = ({ handleSubmission, data }: FlashcardProps) => {
             } else {
                 setSelectedAnswers(selectedAnswers.filter(answer => answer !== id));
             }
+        } else {
+            setSelectedAnswers([id]);
         }
-
-        setSelectedAnswers([id]);
     }
 
     const handleSubmit: () => void = (): void => {
