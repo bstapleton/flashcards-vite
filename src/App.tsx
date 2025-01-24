@@ -2,15 +2,17 @@ import './App.scss'
 import Flashcard from "./components/flashcard/Flashcard.tsx";
 import Scorecard from "./components/scorecard/Scorecard.tsx";
 import {useEffect, useRef, useState} from "react";
-import _ from "lodash";
 import {IFlashcard} from "./components/flashcard/IFlashcard.ts";
 import {IScorecard} from "./components/scorecard/IScorecard.ts";
 import {IAnswer} from "./components/answer/IAnswer.ts";
+import {IError} from "./components/error/IError.ts";
+import {Error} from "./components/error/Error.tsx";
 
 function App() {
     const [isLoading, setLoading] = useState(false);
     const [flashcard, setFlashcard] = useState<IFlashcard | null>(null);
     const [scorecard, setScorecard] = useState<IScorecard | null>(null);
+    const [error, setError] = useState<IError | null>(null);
     const mountedRef = useRef(false);
 
     useEffect(() => {
@@ -61,14 +63,20 @@ function App() {
                 cache: 'no-store'
             });
             const data = await result.json();
-            const flashcard: IFlashcard = data.data;
 
-            // Randomise the answer order to be shown
-            flashcard.answers = data.data.answers.map((value: number) => ({value, sort: Math.random()}))
-                .sort((a: { sort: number; }, b: { sort: number; }) => a.sort - b.sort)
-                .map(({value}: { value: IAnswer; }) => value);
+            if (data.data) {
+                const flashcard: IFlashcard = data.data;
 
-            setFlashcard(flashcard);
+                // Randomise the answer order to be shown
+                flashcard.answers = data.data.answers.map((value: number) => ({value, sort: Math.random()}))
+                    .sort((a: { sort: number; }, b: { sort: number; }) => a.sort - b.sort)
+                    .map(({value}: { value: IAnswer; }) => value);
+
+                setFlashcard(flashcard);
+            } else {
+                setError(data);
+            }
+
             setScorecard(null);
 
             localStorage.setItem('selectedAnswers', JSON.stringify([]));
@@ -89,6 +97,9 @@ function App() {
             ) : null}
             {flashcard ? (
                 <Flashcard handleSubmission={postAnswers} data={flashcard} />
+            ) : null}
+            {error ? (
+                <Error title={error.title} message={error.message} code={error.code} />
             ) : null}
         </>
     )

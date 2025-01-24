@@ -1,0 +1,6 @@
+@import '../card/Card.module.css';
+
+.body {
+    @apply border-t-2 border-t-indigo-500;
+    @apply rounded-bl-xl rounded-br-xl border-b-2 border-b-indigo-500;
+}
