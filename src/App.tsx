@@ -33,7 +33,8 @@ function App() {
                 method: 'POST',
                 headers: {
                     'Authorization': 'Bearer ' + import.meta.env.VITE_API_BEARER,
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-API-KEY': import.meta.env.VITE_API_KEY,
                 },
                 cache: 'no-store',
                 body: JSON.stringify({
@@ -59,7 +60,10 @@ function App() {
             // TODO: get bearer token from localStorage on successful login
             const result = await fetch(import.meta.env.VITE_API_URL + '/api/flashcards/random', {
                 method: 'GET',
-                headers: {'Authorization': 'Bearer ' + import.meta.env.VITE_API_BEARER},
+                headers: {
+                    'Authorization': 'Bearer ' + import.meta.env.VITE_API_BEARER,
+                    'X-API-KEY': import.meta.env.VITE_API_KEY,
+                },
                 cache: 'no-store'
             });
             const data = await result.json();
