@@ -1,14 +1,13 @@
-import './App.scss'
-import Flashcard from "./components/flashcard/Flashcard.tsx";
-import Scorecard from "./components/scorecard/Scorecard.tsx";
+import Flashcard from "../components/flashcard/Flashcard.tsx";
+import Scorecard from "../components/scorecard/Scorecard.tsx";
 import {useEffect, useRef, useState} from "react";
-import {IFlashcard} from "./components/flashcard/IFlashcard.ts";
-import {IScorecard} from "./components/scorecard/IScorecard.ts";
-import {IAnswer} from "./components/answer/IAnswer.ts";
-import {IError} from "./components/error/IError.ts";
-import {Error} from "./components/error/Error.tsx";
+import {IFlashcard} from "../components/flashcard/IFlashcard.ts";
+import {IScorecard} from "../components/scorecard/IScorecard.ts";
+import {IAnswer} from "../components/answer/IAnswer.ts";
+import {IError} from "../components/error/IError.ts";
+import {Error} from "../components/error/Error.tsx";
 
-function App() {
+function Learn() {
     const [isLoading, setLoading] = useState(false);
     const [flashcard, setFlashcard] = useState<IFlashcard | null>(null);
     const [scorecard, setScorecard] = useState<IScorecard | null>(null);
@@ -94,8 +93,7 @@ function App() {
     if (isLoading) return <div>Loading...</div>
 
     return (
-        <>
-            <h1 className="text-4xl font-bold text-indigo-500 uppercase">Flashcards</h1>
+        <main>
             {scorecard ? (
                 <Scorecard handleSubmission={getQuestion} data={scorecard} />
             ) : null}
@@ -105,8 +103,8 @@ function App() {
             {error ? (
                 <Error title={error.title} message={error.message} code={error.code} />
             ) : null}
-        </>
+        </main>
     )
 }
 
-export default App
+export default Learn

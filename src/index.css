@@ -19,12 +19,35 @@
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
+main {
+  place-items: center;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+#primary-nav {
+  @apply border-b-2 border-indigo-500;
+  @apply py-2 px-4;
+  @apply text-right;
+
+  li {
+    @apply inline-block;
+  }
+
+  .link {
+    @apply mx-2;
+    @apply p-1;
+    @apply text-indigo-500 underline;
+
+    &:hover {
+      @apply text-indigo-300 no-underline;
+    }
+  }
+}
 
 button {
   border-radius: 8px;
