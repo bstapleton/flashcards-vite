@@ -31,7 +31,7 @@ function Learn() {
             const result = await fetch(import.meta.env.VITE_API_URL + '/api/flashcards/' + id, {
                 method: 'POST',
                 headers: {
-                    'Authorization': 'Bearer ' + import.meta.env.VITE_API_BEARER,
+                    'Authorization': 'Bearer ' + localStorage.getItem('token'),
                     'Content-Type': 'application/json',
                     'X-API-KEY': import.meta.env.VITE_API_KEY,
                 },
@@ -56,11 +56,10 @@ function Learn() {
         if (isLoading) return;
         setLoading(true);
         try {
-            // TODO: get bearer token from localStorage on successful login
             const result = await fetch(import.meta.env.VITE_API_URL + '/api/flashcards/random', {
                 method: 'GET',
                 headers: {
-                    'Authorization': 'Bearer ' + import.meta.env.VITE_API_BEARER,
+                    'Authorization': 'Bearer ' + localStorage.getItem('token'),
                     'X-API-KEY': import.meta.env.VITE_API_KEY,
                 },
                 cache: 'no-store'
@@ -89,6 +88,8 @@ function Learn() {
             setLoading(false);
         }
     };
+
+    if (!localStorage.getItem('token')) return <div>Please login first!</div>
 
     if (isLoading) return <div>Loading...</div>
 
