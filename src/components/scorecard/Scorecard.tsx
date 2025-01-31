@@ -20,10 +20,10 @@ const Scorecard = ({ handleSubmission, data }: ScorecardProps) => {
     return (
         <article className={styles.card}>
             <header>
-                <h2>Your Scorecard</h2>
+                <h1>Your Scorecard</h1>
                 <p>Total points: {data.user_current_score}</p>
             </header>
-            <div className={styles.body}>
+            <div className={styles.bodyFull}>
                 <h3 className={styles.question}>{data.question}</h3>
                 <p>Type: {getQuestionTypeName(data.type)}</p>
                 <p>Correctness: {data.correctness}</p>
@@ -32,7 +32,7 @@ const Scorecard = ({ handleSubmission, data }: ScorecardProps) => {
                 <p>New difficulty: {data.new_difficulty}</p>
                 <p>Earliest you'll see this question again: {data.next_eligible_at ? new Date(Date.parse(data.next_eligible_at.toString())).toLocaleString() : null}</p>
             </div>
-            <div className={styles.body}>
+            <div className={styles.bodyFull}>
                 (<Check symbolOnly={true} small={true} colour={Colour.GREEN} /> correct selection) (<Times symbolOnly={true} small={true} colour={Colour.RED} /> incorrect selection) (<Minus symbolOnly={true} small={true} colour={Colour.YELLOW} /> correct but not selected)
                 <ul>
                     {data.flashcard_answers.map((flashcardAnswer: IFlashcardAnswer) => (

@@ -39,9 +39,9 @@ const Flashcard = ({ handleSubmission, data }: FlashcardProps) => {
     return (
         <article className={styles.card}>
             <header>
-                <h2>{data.text}</h2>
+                <h1>{data.text}</h1>
             </header>
-            <div className={styles.body}>
+            <div className={styles.bodyFull}>
                 {data.type === QuestionType.Statement ?
                     <ul>
                         <Answer id={1} text={'True'} onClick={handleAnswerClick} isSelected={selectedAnswers.includes(1)} />

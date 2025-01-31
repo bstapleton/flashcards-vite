@@ -2,22 +2,32 @@
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
+    @apply grid grid-cols-12 items-stretch;
 
-    header, footer, .body {
-        @apply bg-zinc-800;
+    header, footer, .bodyFull {
         @apply max-w-4xl;
+        @apply col-span-12;
+    }
+
+    .bodyL, .bodyR {
+        @apply col-span-6;
+        @apply max-w-md;
+    }
+
+    header, footer, .bodyFull, .bodyL, .bodyR {
+        @apply bg-zinc-800;
         @apply px-6 py-4;
         @apply border-l-2 border-l-indigo-500;
+        @apply border-t-2 border-t-indigo-500;
+    }
+
+    header, footer, .bodyFull, .bodyR {
         @apply border-r-2 border-r-indigo-500;
     }
 
     header {
         @apply rounded-tl-xl rounded-tr-xl border-t-2 border-t-indigo-500;
         @apply text-2xl;
-    }
-
-    .body {
-        @apply border-t-2 border-t-indigo-500;
     }
 
     footer {
