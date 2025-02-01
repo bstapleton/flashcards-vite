@@ -3,7 +3,7 @@ import LoginForm from "../components/LoginForm/LoginForm.tsx";
 const Login = () => {
     return (
         <main>
-            <LoginForm title={null} />
+            <LoginForm />
         </main>
     );
 }

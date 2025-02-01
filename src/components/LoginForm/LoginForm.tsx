@@ -3,14 +3,15 @@ import {IError} from "../error/IError.ts";
 import {Link, useNavigate} from "react-router";
 import {Error} from "../error/Error.tsx";
 import styles from "./LoginForm.module.css";
-import {ILoginForm} from "./ILoginForm.ts";
+import { useTranslation } from 'react-i18next';
 
-const LoginForm = ({ title }: ILoginForm) => {
+const LoginForm = () => {
+    const { t } = useTranslation();
     const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState<IError | null>(null);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
     async function postLogin() {
         setLoading(true);
@@ -40,36 +41,34 @@ const LoginForm = ({ title }: ILoginForm) => {
         }
     }
 
-    if (isLoading) return <div>Loading...</div>
+    if (isLoading) return <div>{t('loading')}</div>
 
     return (
         <form className={styles.card}>
             <header>
-                <h1>{title ?? 'Login'}</h1>
+                <h1>{t('login')}</h1>
             </header>
-            <div className={styles.body}>
-                <div className={styles.bodyFull}>
-                    <ul className={'list-none'}>
-                        <li className={'mb-2'}>
-                            <label htmlFor={'username'} className={'block'}>Username</label>
-                            <input id="username" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-                        </li>
-                        <li className={'mb-2'}>
-                            <label htmlFor={'password'} className={'block'}>Password</label>
-                            <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                        </li>
-                        <li className={'mb-2'}>
-                            Not yet registered? <Link className={'link'} to={'/register'}>Register here</Link>
-                        </li>
-                    </ul>
+            <div className={styles.bodyFull}>
+                <ul className={'list-none'}>
+                    <li className={'mb-2'}>
+                        <label htmlFor={'username'} className={'block'}>{t('username')}</label>
+                        <input id="username" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+                    </li>
+                    <li className={'mb-2'}>
+                        <label htmlFor={'password'} className={'block'}>{t('password')}</label>
+                        <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    </li>
+                    <li className={'mb-2'}>
+                        {t('not_registered')} <Link  className={'underline text-indigo-500 :hover:text-indigo-300 :hover:no-underline'} to={'/register'}>{t('register_here')}</Link>
+                    </li>
+                </ul>
 
-                    {error ?
-                        <Error title={error.title} message={error.message} code={error.code} />
-                        : null}
-                </div>
+                {error ?
+                    <Error title={error.title} message={error.message} code={error.code} />
+                : null}
             </div>
             <footer>
-                <button name={'submit'} type={'button'} onClick={postLogin}>Login</button>
+                <button name={'submit'} type={'button'} onClick={postLogin}>{t('login')}</button>
             </footer>
         </form>
     );

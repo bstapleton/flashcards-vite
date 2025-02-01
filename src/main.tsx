@@ -5,17 +5,14 @@ import Home from "./pages/Home.tsx";
 import Login from "./pages/Login.tsx";
 import Learn from "./pages/Learn.tsx";
 import Register from "./pages/Register.tsx";
+import {SiteNav} from "./components/sitenav/SiteNav.tsx";
+import React from 'react';
+import './i18n.ts';
 
 createRoot(document.getElementById('root')!).render(
-    <>
+    <React.StrictMode>
         <h1 className="py-2 text-center text-4xl font-bold text-indigo-500 uppercase">Flashcards</h1>
-        <nav id={'primary-nav'}>
-            <ul>
-                <li><a className={'link'} href={'/'}>Home</a></li>
-                <li><a className={'link'} href={'/learn'}>Learn</a></li>
-                <li><a className={'link'} href={'/login'}>Login</a></li>
-            </ul>
-        </nav>
+        <SiteNav />
         <BrowserRouter>
             <Routes>
                 <Route index element={<Home />} />
@@ -24,5 +21,5 @@ createRoot(document.getElementById('root')!).render(
                 <Route path="register" element={<Register />} />
             </Routes>
         </BrowserRouter>
-    </>
+    </React.StrictMode>
 )

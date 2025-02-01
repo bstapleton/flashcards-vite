@@ -3,9 +3,10 @@ import {IError} from "../error/IError.ts";
 import {Error} from "../error/Error.tsx";
 import {Link} from "react-router";
 import styles from "./RegisterForm.module.css";
-import {IRegisterForm} from "./IRegisterForm.ts";
+import { useTranslation } from 'react-i18next';
 
-const RegisterForm = ({ title }: IRegisterForm) => {
+const RegisterForm = () => {
+    const { t } = useTranslation();
     const [isLoading, setLoading] = useState(false);
     const [showForm, setShowForm] = useState(true);
     const [error, setError] = useState<IError | null>(null);
@@ -53,35 +54,35 @@ const RegisterForm = ({ title }: IRegisterForm) => {
         }
     }
 
-    if (isLoading) return <div>Loading...</div>
+    if (isLoading) return <div>{t('loading')}</div>
 
     return (
         <form className={styles.card}>
             <header>
-                <h1>{title ?? 'Register'}</h1>
+                <h1>{t('register')}</h1>
             </header>
             <div className={styles.bodyFull}>
                 {showForm ? (
                     <div>
                         <div className={styles.field}>
-                            <label htmlFor={'username'} className={'block'}>Username</label>
+                            <label htmlFor={'username'} className={'block'}>{t('username')}</label>
                             <input id="username" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-                            <span className={'block italic'}>This is unique to you. Do not use your email address.</span>
+                            <span className={'block italic'}>{t('username_hint')}</span>
                         </div>
                         <div className={styles.field}>
-                            <label htmlFor={'password'} className={'block'}>Password</label>
+                            <label htmlFor={'password'} className={'block'}>{t('password')}</label>
                             <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                            <span className={'block italic'}>Do not use a password you have used elsewhere. To help with this, we strongly recommend a password manager.</span>
+                            <span className={'block italic'}>{t('password_hint')}</span>
                         </div>
                         <div className={styles.field}>
-                            <label htmlFor={'password_confirmation'} className={'block'}>Password confirmation</label>
+                            <label htmlFor={'password_confirmation'} className={'block'}>{t('password_confirmation')}</label>
                             <input id="password_confirmation" type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} onBlur={checkPasswordsMatch} />
-                            {passwordsMatch === false ? <span className={'block italic'}>Passwords do not match.</span> : null}
+                            {passwordsMatch === false ? <span className={'block italic'}>{t('errors.password_mismatch')}</span> : null}
                         </div>
                         <div className={styles.field}>
-                            <label htmlFor={'display_name'} className={'block'}>Display name</label>
+                            <label htmlFor={'display_name'} className={'block'}>{t('display_name')}</label>
                             <input id="display_name" type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
-                            <span className={'block italic'}>This should be different from your username, since it will protect you from bad actors. Your display name will be used when sharing your progress with others, or when engaging in team-based learning (when the feature eventually gets added).</span>
+                            <span className={'block italic'}>{t('display_name_hint')}</span>
                         </div>
                         {error ?
                             <Error title={error.title} message={error.message} code={error.code} />
@@ -89,14 +90,14 @@ const RegisterForm = ({ title }: IRegisterForm) => {
                     </div>
                 ) : (
                     <div>
-                        <h2>Registered successfully!</h2>
-                        <p><Link to={'/login'}>Click here ot log in</Link></p>
+                        <h2>{t('successful_registration')}</h2>
+                        <p><Link to={'/login'} className={'underline text-indigo-500 :hover:text-indigo-300 :hover:no-underline'}>{t('login')}</Link></p>
                     </div>
                 )}
             </div>
             <footer>
                 <div className={styles.field}>
-                    <button name={'submit'} type={'button'} disabled={passwordsMatch !== true} onClick={postRegister}>Register</button>
+                    <button name={'submit'} type={'button'} disabled={passwordsMatch !== true} onClick={postRegister}>{t('register')}</button>
                 </div>
             </footer>
         </form>

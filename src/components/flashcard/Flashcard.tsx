@@ -1,11 +1,12 @@
 import {useEffect, useState} from 'react';
-import {QuestionType, getQuestionTypeName} from "../../types/questionType.ts";
+import {QuestionType} from "../../types/questionType.ts";
 import {IAnswer} from "../answer/IAnswer.ts";
 import {Answer} from "../answer/Answer.tsx";
 import {ITag} from "../tag/ITag.ts";
 import styles from './Flashcard.module.css';
 import {Tag} from "../tag/Tag.tsx";
 import {IFlashcard} from "./IFlashcard.ts";
+import {useTranslation} from "react-i18next";
 
 interface FlashcardProps {
     handleSubmission: (id: number) => void
@@ -13,6 +14,7 @@ interface FlashcardProps {
 }
 
 const Flashcard = ({ handleSubmission, data }: FlashcardProps) => {
+    const { t } = useTranslation();
     const [selectedAnswers, setSelectedAnswers] = useState<number[]>(JSON.parse(localStorage.getItem('selectedAnswers') || '[]'));
 
     useEffect(() => {
@@ -44,8 +46,8 @@ const Flashcard = ({ handleSubmission, data }: FlashcardProps) => {
             <div className={styles.bodyFull}>
                 {data.type === QuestionType.Statement ?
                     <ul>
-                        <Answer id={1} text={'True'} onClick={handleAnswerClick} isSelected={selectedAnswers.includes(1)} />
-                        <Answer id={0} text={'False'} onClick={handleAnswerClick} isSelected={selectedAnswers.includes(0)} />
+                        <Answer id={1} text={t('true')} onClick={handleAnswerClick} isSelected={selectedAnswers.includes(1)} />
+                        <Answer id={0} text={t('false')} onClick={handleAnswerClick} isSelected={selectedAnswers.includes(0)} />
                     </ul>
                     :
                     <ul>
@@ -57,8 +59,8 @@ const Flashcard = ({ handleSubmission, data }: FlashcardProps) => {
             </div>
             <footer>
                 <ul className={styles.list}>
-                    <li>Type: {getQuestionTypeName(data.type)}</li>
-                    <li>Difficulty: {data.difficulty}</li>
+                    <li>{t('type')}: {t(`types.` + data.type)}</li>
+                    <li>{t('difficulty')}: {t(data.difficulty)}</li>
                     {data.tags ?
                         <li>
                             <ul className={'flex'}>
@@ -70,7 +72,7 @@ const Flashcard = ({ handleSubmission, data }: FlashcardProps) => {
                         </li>
                     : null }
                 </ul>
-                <button onClick={handleSubmit}>Submit your answer</button>
+                <button onClick={handleSubmit}>{t('submit_answer')}</button>
             </footer>
         </article>
     )

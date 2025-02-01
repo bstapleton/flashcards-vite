@@ -1,11 +1,12 @@
 import {IScorecard} from "./IScorecard.ts";
 import {IFlashcardAnswer} from "./IFlashcardAnswer.ts";
 import styles from './Scorecard.module.css';
-import {getQuestionTypeName, QuestionType} from "../../types/questionType.ts";
+import {QuestionType} from "../../types/questionType.ts";
 import {Check} from "../glyphs/check.tsx";
 import {Colour} from "../../types/colour.ts";
 import {Times} from "../glyphs/times.tsx";
 import {Minus} from "../glyphs/minus.tsx";
+import {useTranslation} from "react-i18next";
 
 interface ScorecardProps {
     handleSubmission: () => void
@@ -13,6 +14,7 @@ interface ScorecardProps {
 }
 
 const Scorecard = ({ handleSubmission, data }: ScorecardProps) => {
+    const { t } = useTranslation();
     const handleSubmit = () => {
         handleSubmission();
     }
@@ -20,21 +22,21 @@ const Scorecard = ({ handleSubmission, data }: ScorecardProps) => {
     return (
         <article className={styles.card}>
             <header>
-                <h1>Your Scorecard</h1>
-                <p>Total points: {data.user_current_score}</p>
+                <h1>{t('scorecard')}</h1>
+                <p>{t('total_points')}: {data.user_current_score}</p>
             </header>
             <div className={styles.bodyFull}>
                 <h3 className={styles.question}>{data.question}</h3>
-                <p>Type: {getQuestionTypeName(data.type)}</p>
-                <p>Correctness: {data.correctness}</p>
-                <p>Score: {data.score}</p>
-                <p>Difficulty when answered: {data.old_difficulty}</p>
-                <p>New difficulty: {data.new_difficulty}</p>
-                <p>Earliest you'll see this question again: {data.next_eligible_at ? new Date(Date.parse(data.next_eligible_at.toString())).toLocaleString() : null}</p>
+                <p>{t('type')}: {t(`types.` + data.type)}</p>
+                <p>{t('correctness')}: {t(`correctness_matrix.` + data.correctness)}</p>
+                <p>{t('score')}: {data.score}</p>
+                <p>{t('difficulty_when_answered')}: {t(data.old_difficulty)}</p>
+                <p>{t('new_difficulty')}: {t(data.new_difficulty)}</p>
+                <p>{t('earliest_you_will_see_this_question_again')}: {data.next_eligible_at ? new Date(Date.parse(data.next_eligible_at.toString())).toLocaleString() : null}</p>
             </div>
             {data.type !== QuestionType.Statement ? (
                 <div className={styles.bodyFull}>
-                    (<Check symbolOnly={true} small={true} colour={Colour.GREEN} /> correct selection) (<Times symbolOnly={true} small={true} colour={Colour.RED} /> incorrect selection) (<Minus symbolOnly={true} small={true} colour={Colour.YELLOW} /> correct but not selected)
+                    (<Check symbolOnly={true} small={true} colour={Colour.GREEN} /> {t('correct_selection')}) (<Times symbolOnly={true} small={true} colour={Colour.RED} /> {t('incorrect_selection')}) (<Minus symbolOnly={true} small={true} colour={Colour.YELLOW} /> {t('correct_but_not_selected')})
                     <ul>
                         {data.flashcard_answers.map((flashcardAnswer: IFlashcardAnswer) => (
                             <li key={flashcardAnswer.id} className={styles.answer}>
@@ -62,13 +64,13 @@ const Scorecard = ({ handleSubmission, data }: ScorecardProps) => {
             ) : null}
             {data.previous_attempt.attemptedAt ? (
                 <div className={styles.body}>
-                    <h3 className={styles.previous}>Previous attempt</h3>
-                    <p>At: {data.previous_attempt.attemptedAt.toString()}</p>
-                    <p>Correctness: {data.previous_attempt.correctness}</p>
+                    <h3 className={styles.previous}>{t('previous_attempt')}</h3>
+                    <p>{t('at')}: {data.previous_attempt.attemptedAt.toString()}</p>
+                    <p>{t('correctness')}: {data.previous_attempt.correctness}</p>
                 </div>
             ) : null}
             <footer>
-                <button onClick={handleSubmit}>Next question</button>
+                <button onClick={handleSubmit}>{t('next_question')}</button>
             </footer>
         </article>
     )
