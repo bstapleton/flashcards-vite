@@ -74,7 +74,7 @@ i18n
                         password_mismatch: 'Passwords do not match'
                     }
                 }
-            }
+            },
         }
     });
 
