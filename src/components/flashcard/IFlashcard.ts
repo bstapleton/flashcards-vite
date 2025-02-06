@@ -8,7 +8,6 @@ export interface IFlashcard {
     text: string
     type: QuestionType
     difficulty: Difficulty
-    lastSeenAt: Date | null
     eligibleAt: Date
     answers: IAnswer[]
     tags: ITag[]

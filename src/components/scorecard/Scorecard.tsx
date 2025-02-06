@@ -1,5 +1,5 @@
 import {IScorecard} from "./IScorecard.ts";
-import {IFlashcardAnswer} from "./IFlashcardAnswer.ts";
+import {IGivenAnswer} from "./IGivenAnswer.ts";
 import styles from './Scorecard.module.css';
 import {QuestionType} from "../../types/questionType.ts";
 import {Check} from "../glyphs/check.tsx";
@@ -38,7 +38,7 @@ const Scorecard = ({ handleSubmission, data }: ScorecardProps) => {
                 <div className={styles.bodyFull}>
                     (<Check symbolOnly={true} small={true} colour={Colour.GREEN} /> {t('correct_selection')}) (<Times symbolOnly={true} small={true} colour={Colour.RED} /> {t('incorrect_selection')}) (<Minus symbolOnly={true} small={true} colour={Colour.YELLOW} /> {t('correct_but_not_selected')})
                     <ul>
-                        {data.flashcard_answers.map((flashcardAnswer: IFlashcardAnswer) => (
+                        {data.flashcard_answers.map((flashcardAnswer: IGivenAnswer) => (
                             <li key={flashcardAnswer.id} className={styles.answer}>
                                 {flashcardAnswer.was_selected && flashcardAnswer.is_correct ? (
                                     <Check symbolOnly={false} colour={Colour.GREEN} />
@@ -60,13 +60,6 @@ const Scorecard = ({ handleSubmission, data }: ScorecardProps) => {
                             </li>
                         ))}
                     </ul>
-                </div>
-            ) : null}
-            {data.previous_attempt.attemptedAt ? (
-                <div className={styles.body}>
-                    <h3 className={styles.previous}>{t('previous_attempt')}</h3>
-                    <p>{t('at')}: {data.previous_attempt.attemptedAt.toString()}</p>
-                    <p>{t('correctness')}: {data.previous_attempt.correctness}</p>
                 </div>
             ) : null}
             <footer>
