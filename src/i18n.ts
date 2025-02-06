@@ -22,7 +22,10 @@ i18n
                     home: 'Home',
                     learn: 'Learn',
                     login: 'Login',
+                    profile: 'Profile',
+                    history: 'History',
                     register: 'Register',
+                    logout: 'Logout',
                     correctness: 'Correctness',
                     correctness_matrix: {
                         complete: 'Completely correct',

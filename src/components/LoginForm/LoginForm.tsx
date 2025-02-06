@@ -1,9 +1,11 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {IError} from "../error/IError.ts";
 import {Link, useNavigate} from "react-router";
 import {Error} from "../error/Error.tsx";
 import styles from "./LoginForm.module.css";
 import { useTranslation } from 'react-i18next';
+import {useSelector, useDispatch} from "react-redux";
+import {login} from "../../store/loginSlice.ts";
 
 const LoginForm = () => {
     const { t } = useTranslation();
@@ -12,6 +14,14 @@ const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const isLoggedIn = useSelector((state: { login: { value: boolean; }; }) => state.login.value);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            navigate('/learn');
+        }
+    }, []);
 
     async function postLogin() {
         setLoading(true);
@@ -28,6 +38,7 @@ const LoginForm = () => {
 
             if (data.token) {
                 localStorage.setItem('token', data.token)
+                dispatch(login())
             } else {
                 setError(data);
             }
@@ -52,20 +63,24 @@ const LoginForm = () => {
                 <ul className={'list-none'}>
                     <li className={'mb-2'}>
                         <label htmlFor={'username'} className={'block'}>{t('username')}</label>
-                        <input id="username" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+                        <input id="username" type="text" value={username}
+                               onChange={(e) => setUsername(e.target.value)}/>
                     </li>
                     <li className={'mb-2'}>
                         <label htmlFor={'password'} className={'block'}>{t('password')}</label>
-                        <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <input id="password" type="password" value={password}
+                               onChange={(e) => setPassword(e.target.value)}/>
                     </li>
                     <li className={'mb-2'}>
-                        {t('not_registered')} <Link  className={'underline text-indigo-500 :hover:text-indigo-300 :hover:no-underline'} to={'/register'}>{t('register_here')}</Link>
+                        {t('not_registered')} <Link
+                        className={'underline text-indigo-500 :hover:text-indigo-300 :hover:no-underline'}
+                        to={'/register'}>{t('register_here')}</Link>
                     </li>
                 </ul>
 
                 {error ?
-                    <Error title={error.title} message={error.message} code={error.code} />
-                : null}
+                    <Error title={error.title} message={error.message} code={error.code}/>
+                    : null}
             </div>
             <footer>
                 <button name={'submit'} type={'button'} onClick={postLogin}>{t('login')}</button>

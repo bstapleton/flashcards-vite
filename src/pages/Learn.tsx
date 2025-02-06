@@ -1,23 +1,28 @@
 import Flashcard from "../components/flashcard/Flashcard.tsx";
 import Scorecard from "../components/scorecard/Scorecard.tsx";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
+import {useNavigate} from "react-router";
 import {IFlashcard} from "../components/flashcard/IFlashcard.ts";
 import {IScorecard} from "../components/scorecard/IScorecard.ts";
 import {IAnswer} from "../components/answer/IAnswer.ts";
 import {IError} from "../components/error/IError.ts";
 import {Error} from "../components/error/Error.tsx";
+import {useSelector} from "react-redux";
 
 function Learn() {
     const [isLoading, setLoading] = useState(false);
     const [flashcard, setFlashcard] = useState<IFlashcard | null>(null);
     const [scorecard, setScorecard] = useState<IScorecard | null>(null);
     const [error, setError] = useState<IError | null>(null);
-    const mountedRef = useRef(false);
+    const navigate = useNavigate();
+    const isLoggedIn = useSelector((state: { login: { value: boolean; }; }) => state.login.value);
 
     useEffect(() => {
-        if (mountedRef.current) return;
-        mountedRef.current = true;
-        getQuestion();
+        if (!isLoggedIn) {
+            navigate('/login');
+        } else {
+            getQuestion();
+        }
     }, []);
 
     /**
