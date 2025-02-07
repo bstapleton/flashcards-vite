@@ -1,0 +1,15 @@
+.attempt {
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    @apply md:w-48 lg:w-10/12;
+    @apply mb-2;
+
+    @apply bg-zinc-800;
+    @apply px-6 py-4;
+    @apply border-2 border-indigo-500 rounded-lg;
+
+    .list {
+        @apply list-none;
+    }
+}

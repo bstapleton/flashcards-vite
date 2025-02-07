@@ -35,6 +35,7 @@ i18n
                     your_scorecard: 'Your scorecard',
                     total_points: 'Total points',
                     type: 'Type',
+                    question: 'Question',
                     types: {
                         multiple: 'One or more correct answers',
                         single: 'Single correct answer',
@@ -73,6 +74,7 @@ i18n
                     click_to_login: 'Click here to login',
                     loading: 'Loading, please wait...',
                     scorecard: 'Your scorecard',
+                    history_description: 'The data displayed here is correct as of the time you submitted your answer/s. Since both question and answer data can be changed by yourself at any time, this reflects your progress more accurately.',
                     errors: {
                         password_mismatch: 'Passwords do not match'
                     }
