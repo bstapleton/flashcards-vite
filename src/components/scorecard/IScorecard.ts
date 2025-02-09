@@ -11,7 +11,7 @@ export interface IScorecard {
     user_current_score: number;
     old_difficulty: Difficulty;
     new_difficulty: Difficulty;
-    next_eligible_at: Date;
+    next_eligible_at: string;
     flashcard_answers: IGivenAnswer[];
 }
 

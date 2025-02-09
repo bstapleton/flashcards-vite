@@ -32,7 +32,7 @@ const Scorecard = ({ handleSubmission, data }: ScorecardProps) => {
                 <p>{t('score')}: {data.score}</p>
                 <p>{t('difficulty_when_answered')}: {t(data.old_difficulty)}</p>
                 <p>{t('new_difficulty')}: {t(data.new_difficulty)}</p>
-                <p>{t('earliest_you_will_see_this_question_again')}: {data.next_eligible_at ? new Date(Date.parse(data.next_eligible_at.toString())).toLocaleString() : null}</p>
+                <p>{t('earliest_you_will_see_this_question_again')}: {data.next_eligible_at}</p>
             </div>
             {data.type !== QuestionType.Statement ? (
                 <div className={styles.bodyFull}>
