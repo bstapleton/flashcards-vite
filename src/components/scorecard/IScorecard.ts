@@ -8,6 +8,7 @@ export interface IScorecard {
     type: QuestionType;
     correctness: Correctness;
     score: number;
+    explanation: string | null;
     user_current_score: number;
     old_difficulty: Difficulty;
     new_difficulty: Difficulty;

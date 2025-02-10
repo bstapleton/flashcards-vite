@@ -30,6 +30,9 @@ const Scorecard = ({ handleSubmission, data }: ScorecardProps) => {
                 <p>{t('type')}: {t(`types.` + data.type)}</p>
                 <p>{t('correctness')}: {t(`correctness_matrix.` + data.correctness)}</p>
                 <p>{t('score')}: {data.score}</p>
+                {data.explanation ? (
+                    <blockquote className={'italic pl-2'}>"{data.explanation}"</blockquote>
+                ) : null}
                 <p>{t('difficulty_when_answered')}: {t(data.old_difficulty)}</p>
                 <p>{t('new_difficulty')}: {t(data.new_difficulty)}</p>
                 <p>{t('earliest_you_will_see_this_question_again')}: {data.next_eligible_at}</p>
