@@ -25,7 +25,7 @@ export const Attempt = (props: IAttempt) => {
                     <li>Answers Given:
                         <ul className={styles.list}>
                             {props.answers_given.filter((answer: IGivenAnswer) => answer.was_selected).map((answer: IGivenAnswer) => (
-                                <li key={answer.id}>
+                                <li key={answer.id || answer.text}>
                                     {answer.text}
                                     {answer.is_correct
                                         ? <Check symbolOnly={true} small={true} colour={Colour.GREEN} />
