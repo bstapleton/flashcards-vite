@@ -12,5 +12,15 @@ export interface IAttempt {
     points_earned: number
     answered_at: Date
     answers_given: IGivenAnswer[]
-    tags: string[]
+    tags: string[],
+    older_attempts: IAttempt[]
+    newer_attempts: IAttempt[]
+}
+
+export interface IHistoricAttempt {
+    id: number
+    correctness: Correctness
+    difficulty: Difficulty
+    points_earned: number
+    answered_at: Date
 }

@@ -69,6 +69,8 @@ function History() {
                         answered_at={attempt.answered_at}
                         answers_given={attempt.answers_given}
                         tags={attempt.tags}
+                        older_attempts={attempt.older_attempts}
+                        newer_attempts={attempt.newer_attempts}
                     />
                 ))
             ) : null}

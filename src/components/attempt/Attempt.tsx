@@ -1,5 +1,5 @@
 import styles from "./Attempt.module.css";
-import {IAttempt} from "./IAttempt.ts";
+import {IAttempt, IHistoricAttempt} from "./IAttempt.ts";
 import {IGivenAnswer} from "../scorecard/IGivenAnswer.ts";
 import {Colour} from "../../types/colour.ts";
 import {Check} from "../glyphs/check.tsx";
@@ -17,7 +17,6 @@ export const Attempt = (props: IAttempt) => {
             <div className={styles.bodyFull}>
                 <ul className={styles.list}>
                     <li>Correctness: {props.correctness}</li>
-                    <li>Type: {props.question_type}</li>
                     <li>Difficulty: {props.difficulty}</li>
                     <li>Points Earned: {props.points_earned}</li>
                     <li>Answered At: {props.answered_at.toLocaleString()}</li>
@@ -36,6 +35,28 @@ export const Attempt = (props: IAttempt) => {
                         </ul>
                     </li>
                 </ul>
+                {props.older_attempts ? (
+                    <table className={styles.history}>
+                        <thead>
+                        <tr>
+                            <th>Attempted at</th>
+                            <th>Correctness</th>
+                            <th>Points Earned</th>
+                            <th>Difficulty</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {props.older_attempts.map((attempt: IHistoricAttempt) => (
+                            <tr key={attempt.id}>
+                                <td>{attempt.answered_at.toLocaleString()}</td>
+                                <td>{attempt.correctness}</td>
+                                <td>{attempt.points_earned}</td>
+                                <td>{attempt.difficulty}</td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                ) : null}
             </div>
         </article>
     )

@@ -12,4 +12,18 @@
     .list {
         @apply list-none;
     }
+
+    .history {
+        @apply border-collapse;
+
+        th, td {
+            @apply border-2 border-indigo-500;
+            @apply px-4 py-2;
+        }
+
+        th {
+            @apply bg-gray-700;
+            @apply text-gray-200;
+        }
+    }
 }
