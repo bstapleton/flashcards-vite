@@ -5,6 +5,7 @@ import {Error} from "../components/error/Error.tsx";
 import {useSelector} from "react-redux";
 import {IAttempt} from "../components/attempt/IAttempt.ts";
 import {Attempt} from "../components/attempt/Attempt.tsx";
+import {ErrorCode} from "../types/errorCode.ts";
 
 function History() {
     const [isLoading, setLoading] = useState(false);
@@ -34,6 +35,11 @@ function History() {
                 cache: 'no-store'
             });
             const data = await result.json();
+
+            // Session expired - let them know to log in again
+            if (data.data.code === ErrorCode.UNAUTHENTICATED) {
+                localStorage.removeItem('token');
+            }
 
             if (data.data) {
                 const attempts: IAttempt[] = data.data;
