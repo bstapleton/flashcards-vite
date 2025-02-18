@@ -68,7 +68,7 @@ function History() {
                         points_earned={attempt.points_earned}
                         answered_at={attempt.answered_at}
                         answers_given={attempt.answers_given}
-                        tags={attempt.tags}
+                        keywords={attempt.keywords}
                         older_attempts={attempt.older_attempts}
                         newer_attempts={attempt.newer_attempts}
                     />

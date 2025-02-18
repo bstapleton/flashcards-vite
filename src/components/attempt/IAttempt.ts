@@ -12,7 +12,7 @@ export interface IAttempt {
     points_earned: number
     answered_at: Date
     answers_given: IGivenAnswer[]
-    tags: string[],
+    keywords: string[],
     older_attempts: IAttempt[]
     newer_attempts: IAttempt[]
 }

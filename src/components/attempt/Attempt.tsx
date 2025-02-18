@@ -8,9 +8,10 @@ import {useTranslation} from "react-i18next";
 
 export const Attempt = (props: IAttempt) => {
     const { t } = useTranslation();
+    const answers: IGivenAnswer[] = props.answers_given.filter((answer: IGivenAnswer) => answer.was_selected);
 
     return (
-        <article className={styles.attempt}>
+        <article className={`${styles.attempt} ${props.older_attempts.length ? styles.hasFooter : null}`}>
             <header>
                 <h2>{props.question_type === 'statement' ? t('types.statement') : t('question') }: <span className={'font-bold'}>{props.question}</span></h2>
             </header>
@@ -20,22 +21,26 @@ export const Attempt = (props: IAttempt) => {
                     <li>Difficulty: {props.difficulty}</li>
                     <li>Points Earned: {props.points_earned}</li>
                     <li>Answered At: {props.answered_at.toLocaleString()}</li>
-                    <li>Tags: {props.tags.join(', ')}</li>
-                    <li>Answers Given:
-                        <ul className={styles.list}>
-                            {props.answers_given.filter((answer: IGivenAnswer) => answer.was_selected).map((answer: IGivenAnswer) => (
-                                <li key={answer.id || answer.text}>
-                                    {answer.text}
-                                    {answer.is_correct
-                                        ? <Check symbolOnly={true} small={true} colour={Colour.GREEN} />
-                                        : <Times symbolOnly={true} small={true} colour={Colour.RED} />
-                                    }
-                                </li>
-                            ))}
-                        </ul>
-                    </li>
+                    <li>Tags: {props.keywords.map((keyword: string) => (<span className={styles.keyword} key={keyword}>{keyword}</span>))}</li>
+                    {answers.length ? (
+                        <li>Answers Given:
+                            <ul className={styles.list}>
+                                {answers.map((answer: IGivenAnswer) => (
+                                    <li key={answer.id || answer.text}>
+                                        {answer.text}
+                                        {answer.is_correct
+                                            ? <Check symbolOnly={true} small={true} colour={Colour.GREEN} />
+                                            : <Times symbolOnly={true} small={true} colour={Colour.RED} />
+                                        }
+                                    </li>
+                                ))}
+                            </ul>
+                        </li>
+                    ) : null}
                 </ul>
-                {props.older_attempts ? (
+            </div>
+            {props.older_attempts.length ? (
+                <footer>
                     <table className={styles.history}>
                         <thead>
                         <tr>
@@ -56,8 +61,8 @@ export const Attempt = (props: IAttempt) => {
                         ))}
                         </tbody>
                     </table>
-                ) : null}
-            </div>
+                </footer>
+            ) : null}
         </article>
     )
 }
