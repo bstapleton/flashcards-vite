@@ -11,6 +11,10 @@ import React from 'react';
 import './i18n.ts';
 import store from "./store.ts";
 import {Provider} from "react-redux";
+import Import from "./pages/Import.tsx";
+import Create from "./pages/Create.tsx";
+import Profile from "./pages/Profile.tsx";
+import Authed from "./pages/Authed.tsx";
 
 createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
@@ -24,6 +28,10 @@ createRoot(document.getElementById('root')!).render(
                     <Route path="history" element={<History />} />
                     <Route path="login" element={<Login />} />
                     <Route path="register" element={<Register />} />
+                    <Route path="authed" element={<Authed />} />
+                    <Route path="import" element={<Import />} />
+                    <Route path="create" element={<Create />} />
+                    <Route path="profile" element={<Profile />} />
                 </Routes>
             </BrowserRouter>
         </Provider>

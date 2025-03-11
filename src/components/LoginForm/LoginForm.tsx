@@ -38,6 +38,8 @@ const LoginForm = () => {
 
             if (data.token) {
                 localStorage.setItem('token', data.token)
+                localStorage.setItem('display_name', data.display_name)
+                localStorage.setItem('is_trial_user', data.is_trial_user)
                 dispatch(login())
             } else {
                 setError(data);
@@ -47,7 +49,7 @@ const LoginForm = () => {
         } finally {
             setLoading(false);
             if (localStorage.getItem('token')) {
-                navigate('/learn');
+                navigate('/authed');
             }
         }
     }
