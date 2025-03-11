@@ -11,7 +11,7 @@ export const SiteNav = () => {
     const dispatch = useDispatch();
 
     function logOut() {
-        localStorage.removeItem('token');
+        localStorage.clear();
         dispatch(logout());
     }
 
