@@ -37,15 +37,15 @@ main {
   li {
     @apply inline-block;
   }
+}
 
-  .link {
-    @apply mx-2;
-    @apply p-1;
-    @apply text-indigo-500 underline;
+.link {
+  @apply mx-2;
+  @apply p-1;
+  @apply text-indigo-500 underline;
 
-    &:hover {
-      @apply text-indigo-300 no-underline;
-    }
+  &:hover {
+    @apply text-indigo-300 no-underline;
   }
 }
 

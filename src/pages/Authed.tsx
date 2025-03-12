@@ -57,10 +57,12 @@ const Authed = () => {
                     )}
                 </div>
                 <footer>
-                    <a className={'link'} href={'/learn'}>{t('learn')}</a>
-                    <a className={'link'} href={'/create'}>{t('create_questions')}</a>
-                    <a className={'link'} href={'/import'}>{t('import')}</a>
-                    <a className={'link'} href={'/profile'}>{t('profile')}</a>
+                    <ul className={'flex'}>
+                        <li><a className={'link'} href={'/learn'}>{t('learn')}</a></li>
+                        <li><a className={'link'} href={'/create'}>{t('create_questions')}</a></li>
+                        <li><a className={'link'} href={'/import'}>{t('import')}</a></li>
+                        <li><a className={'link'} href={'/profile'}>{t('profile')}</a></li>
+                    </ul>
                 </footer>
             </div>
         </main>
