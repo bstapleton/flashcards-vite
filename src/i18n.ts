@@ -98,7 +98,16 @@ i18n
                         export_attempts: 'Export all of your attempt data to CSV (Excel-compatible) format',
                         export_json: 'Export all of your questions to JSON format in case you want to use it elsewhere'
                     },
-                    after_trial_ends: 'After your trial ends, your account will become read-only. You\'ll no longer be able to create new questions (even if you didn\'t use up your 20 question limit) or make attempts to answer the questions you have. Upgrading will get you the following additional features:'
+                    after_trial_ends: 'After your trial ends, your account will become read-only. You\'ll no longer be able to create new questions (even if you didn\'t use up your 20 question limit) or make attempts to answer the questions you have. Upgrading will get you the following additional features:',
+                    import_intro: 'Here there are packs 10 questions you can import for your account and try answering. This app works best when you tailor its resources for your own use case, but we know it can be a bit of a chore to sit down and author questions and answers through a form, so to give you a taster of how the app works, this resource is provided for you.',
+                    import_stats: 'You currently have {{count}} questions, and {{remaining}} remaining for your trial account.',
+                    import_zero_remaining: 'Because you have 0 remaining questions, you will need to delete some, or upgrade your account before the import process will work.',
+                    import_instructions: 'Just click on one of the topics to import {{actualRemaining}} questions around that subject.',
+                    import_topics: {
+                        dogs: 'Dogs',
+                        literature: 'Literature',
+                        physics: 'Physics',
+                    }
                 }
             },
         }

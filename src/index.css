@@ -49,6 +49,16 @@ main {
   }
 }
 
+p {
+  @apply mb-4;
+}
+
+.callout {
+  @apply border-indigo-500 border rounded-md;
+  @apply bg-indigo-700;
+  @apply p-2;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
