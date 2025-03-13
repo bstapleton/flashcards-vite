@@ -107,7 +107,12 @@ i18n
                         dogs: 'Dogs',
                         literature: 'Literature',
                         physics: 'Physics',
-                    }
+                    },
+                    number_of_questions: 'Your total questions',
+                    import_count: 'Number imported',
+                    remaining_count: 'Trial account questions remaining',
+                    close: 'Close',
+                    results: 'Results'
                 }
             },
         }
