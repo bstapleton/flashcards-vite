@@ -113,7 +113,6 @@ const Import = () => {
             <>
                 {showModal && (
                     <Modal
-                        onClose={closeModal}
                         title={t('results')}
                         data={modalData ?? undefined}
                         actions={[
