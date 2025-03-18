@@ -1,13 +1,13 @@
-import styles from './TextInput.module.css'
+import styles from './Textarea.module.css'
 
-type TextInputProps = {
+type TextareaProps = {
     label: string;
     id: string;
     validationRule?: string;
     hint?: string;
 }
 
-export default function TextInput(props: TextInputProps) {
+export default function Textarea(props: TextareaProps) {
     return (
         <div className={styles.field}>
             <label
@@ -17,7 +17,7 @@ export default function TextInput(props: TextInputProps) {
             </label>
             {props.hint ? (
                 <>
-                    <input type="text"
+                    <textarea
                            id={props.id}
                            className={styles.input}
                            aria-describedby={props.id + '-hint'}
@@ -27,8 +27,8 @@ export default function TextInput(props: TextInputProps) {
                     </p>
                 </>
             ) : (
-                <input type="text"
-                        id={props.id}
+                <textarea
+                    id={props.id}
                     className={styles.input}
                 />
             )}
