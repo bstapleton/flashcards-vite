@@ -1,0 +1,4 @@
+.buttonGroup {
+    @apply flex flex-row;
+    @apply mb-4;
+}

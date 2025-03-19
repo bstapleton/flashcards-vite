@@ -7,7 +7,7 @@
 }
 
 .answerButton {
-    @apply bg-violet-500 border-violet-500 rounded-lg  transition-colors duration-100;
+    @apply bg-violet-700 border-violet-700 rounded-lg  transition-colors duration-100;
     @apply text-left;
 
     &:hover {

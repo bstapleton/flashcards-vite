@@ -7,7 +7,7 @@ export const Answer = (props: IAnswer) => {
             <button
                 key={props.id}
                 type={'button'}
-                className={styles.answerButton + ` ${props.isSelected ? styles.selected : ''}`}
+                className={'button ' + styles.answerButton + ` ${props.isSelected ? styles.selected : ''}`}
                 onClick={() => props.onClick(props.id)}
                 value={props.text}
                 name={'answer'}

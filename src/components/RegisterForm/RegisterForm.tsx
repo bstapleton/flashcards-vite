@@ -97,7 +97,7 @@ const RegisterForm = () => {
             </div>
             <footer>
                 <div className={styles.field}>
-                    <button name={'submit'} type={'button'} disabled={passwordsMatch !== true} onClick={postRegister}>{t('register')}</button>
+                    <button className={'button'} name={'submit'} type={'button'} disabled={passwordsMatch !== true} onClick={postRegister}>{t('register')}</button>
                 </div>
             </footer>
         </form>

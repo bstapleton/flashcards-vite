@@ -85,7 +85,7 @@ const LoginForm = () => {
                     : null}
             </div>
             <footer>
-                <button name={'submit'} type={'button'} onClick={postLogin}>{t('login')}</button>
+                <button className={'button'} name={'submit'} type={'button'} onClick={postLogin}>{t('login')}</button>
             </footer>
         </form>
     );

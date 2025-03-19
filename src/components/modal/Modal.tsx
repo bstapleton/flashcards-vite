@@ -18,7 +18,7 @@ export default function Modal({ data, title, content, actions }: ModalProps) {
             <div aria-hidden={true} className={styles.overlay}>
                 <div className={styles.modal}>
                     <div className={styles.container}>
-                        {title && <header>{title}</header>}
+                        {title && <header className={styles.header}>{title}</header>}
                         <div className={styles.content}>
                             {data ? (
                                     <ul>
@@ -30,7 +30,7 @@ export default function Modal({ data, title, content, actions }: ModalProps) {
                         </div>
                         <div className={styles.actions}>
                             {actions && actions.map((action, index) => (
-                                <button key={index} onClick={action.onClick}>
+                                <button className={'button'} key={index} onClick={action.onClick}>
                                     {t(action.label)}
                                 </button>
                             ))}

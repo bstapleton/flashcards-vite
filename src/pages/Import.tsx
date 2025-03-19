@@ -142,9 +142,9 @@ const Import = () => {
                             <p>{t('import_zero_remaining')}</p>
                         ) : (
                             <ul className={'flex'}>
-                                <li className={'mr-4'}><button onClick={() => importTopic('dogs')}>{t('import_topics.dogs')}</button></li>
-                                <li className={'mr-4'}><button onClick={() => importTopic('literature')}>{t('import_topics.literature')}</button></li>
-                                <li className={'mr-4'}><button onClick={() => importTopic('physics')}>{t('import_topics.physics')}</button></li>
+                                <li className={'mr-4'}><button className={'button'} onClick={() => importTopic('dogs')}>{t('import_topics.dogs')}</button></li>
+                                <li className={'mr-4'}><button className={'button'} onClick={() => importTopic('literature')}>{t('import_topics.literature')}</button></li>
+                                <li className={'mr-4'}><button className={'button'} onClick={() => importTopic('physics')}>{t('import_topics.physics')}</button></li>
                             </ul>
                         )}
                     </footer>

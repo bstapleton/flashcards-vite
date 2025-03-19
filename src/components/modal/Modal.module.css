@@ -14,7 +14,7 @@
     @apply w-full py-2 bg-white cursor-default pointer-events-auto dark:bg-gray-800 relative rounded-xl mx-auto max-w-sm
 }
 
-header {
+.header {
     @apply text-xl pb-2 px-4 border-b border-gray-600
 }
 
@@ -24,10 +24,4 @@ header {
 
 .actions {
     @apply px-4 pt-4 pb-2 border-t border-gray-600
-}
-
-button {
-    &:not(:last-child) {
-        @apply mr-4
-    }
 }

@@ -66,7 +66,7 @@ const Scorecard = ({ handleSubmission, data }: ScorecardProps) => {
                 </div>
             ) : null}
             <footer>
-                <button onClick={handleSubmit}>{t('next_question')}</button>
+                <button className={'button'} onClick={handleSubmit}>{t('next_question')}</button>
             </footer>
         </article>
     )
