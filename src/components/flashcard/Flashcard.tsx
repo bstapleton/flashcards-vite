@@ -72,7 +72,7 @@ const Flashcard = ({ handleSubmission, data }: FlashcardProps) => {
                         </li>
                     : null }
                 </ul>
-                <button onClick={handleSubmit}>{t('submit_answer')}</button>
+                <button className={'button'} onClick={handleSubmit}>{t('submit_answer')}</button>
             </footer>
         </article>
     )
