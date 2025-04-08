@@ -4,7 +4,7 @@ import {logout} from "../../store/loginSlice.ts";
 
 export const SiteNav = () => {
     const { t, i18n } = useTranslation();
-    const lngs = {
+    const lngs: { [key: string]: { nativeName: string; }} = {
         en: { nativeName: 'English' },
     }
     const isLoggedIn = useSelector((state: { login: { value: boolean; }; }) => state.login.value);
