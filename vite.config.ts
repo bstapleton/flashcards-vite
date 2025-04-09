@@ -12,7 +12,12 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: ['react-router', 'react-router-dom', 'react-i18next'],
+      external: ['react', 'react-router', 'react-router-dom', 'react-redux'],
+      output: {
+        globals: {
+          react: 'React',
+        }
+      }
     }
   }
 })
