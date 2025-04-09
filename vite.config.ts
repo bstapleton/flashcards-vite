@@ -9,5 +9,10 @@ export default defineConfig({
     postcss: {
       plugins: [tailwindcss()],
     },
+  },
+  build: {
+    rollupOptions: {
+      external: ['react-router', 'react-router-dom', 'react-i18next'],
+    }
   }
 })
