@@ -3,7 +3,9 @@ import {IError} from "../error/IError.ts";
 import {Error} from "../error/Error.tsx";
 import {Link} from "react-router";
 import styles from "./RegisterForm.module.css";
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
+import TextInput from "../fields/text/TextInput.tsx";
+import {TextFieldType} from "../fields/text/TextFieldType.ts";
 
 const RegisterForm = () => {
     const { t } = useTranslation();
@@ -64,26 +66,39 @@ const RegisterForm = () => {
             <div className={styles.bodyFull}>
                 {showForm ? (
                     <div>
-                        <div className={styles.field}>
-                            <label htmlFor={'username'} className={'block'}>{t('username')}</label>
-                            <input id="username" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-                            <span className={'block italic'}>{t('username_hint')}</span>
-                        </div>
-                        <div className={styles.field}>
-                            <label htmlFor={'password'} className={'block'}>{t('password')}</label>
-                            <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                            <span className={'block italic'}>{t('password_hint')}</span>
-                        </div>
-                        <div className={styles.field}>
-                            <label htmlFor={'password_confirmation'} className={'block'}>{t('password_confirmation')}</label>
-                            <input id="password_confirmation" type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} onBlur={checkPasswordsMatch} />
-                            {passwordsMatch === false ? <span className={'block italic'}>{t('errors.password_mismatch')}</span> : null}
-                        </div>
-                        <div className={styles.field}>
-                            <label htmlFor={'display_name'} className={'block'}>{t('display_name')}</label>
-                            <input id="display_name" type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
-                            <span className={'block italic'}>{t('display_name_hint')}</span>
-                        </div>
+                        <TextInput
+                            label={t('username')}
+                            type={TextFieldType.text}
+                            id={'username'}
+                            hint={t('username_hint')}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+
+                        <TextInput
+                            label={t('password')}
+                            type={TextFieldType.password}
+                            id={'password'}
+                            hint={t('password_hint')}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+
+                        <TextInput
+                            label={t('password_confirmation')}
+                            type={TextFieldType.password}
+                            id={'password_confirmation'}
+                            onChange={(e) => setPasswordConfirmation(e.target.value)}
+                            onBlur={checkPasswordsMatch}
+                        />
+                        {passwordsMatch === false ? <span className={'block italic'}>{t('errors.password_mismatch')}</span> : null}
+
+                        <TextInput
+                            label={t('display_name')}
+                            type={TextFieldType.text}
+                            id={'display_name'}
+                            hint={t('display_name_hint')}
+                            onChange={(e) => setDisplayName(e.target.value)}
+                        />
+
                         {error ?
                             <Error title={error.title} message={error.message} code={error.code} />
                         : null}

@@ -4,12 +4,12 @@ export const loginSlice = createSlice({
     name: 'login',
     initialState: {
         value: !!localStorage.getItem('token'),
-        isTrial: !!localStorage.getItem('is_trial_user')
+        isTrial: localStorage.getItem('is_trial_user') === 'true'
     },
     reducers: {
         login: state => {
             state.value = true
-            state.isTrial = true
+            state.isTrial = localStorage.getItem('is_trial_user') === 'true'
         },
         logout: state => {
             state.value = false

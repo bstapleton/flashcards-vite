@@ -1,11 +1,13 @@
 import {useEffect, useState} from 'react';
 import {IError} from "../error/IError.ts";
-import {Link, useNavigate} from "react-router";
+import {useNavigate} from "react-router";
 import {Error} from "../error/Error.tsx";
 import styles from "./LoginForm.module.css";
-import { useTranslation } from 'react-i18next';
-import {useSelector, useDispatch} from "react-redux";
+import {useTranslation} from 'react-i18next';
+import {useDispatch, useSelector} from "react-redux";
 import {login} from "../../store/loginSlice.ts";
+import TextInput from "../fields/text/TextInput.tsx";
+import {TextFieldType} from "../fields/text/TextFieldType.ts";
 
 const LoginForm = () => {
     const { t } = useTranslation();
@@ -62,23 +64,20 @@ const LoginForm = () => {
                 <h1>{t('login')}</h1>
             </header>
             <div className={styles.bodyFull}>
-                <ul className={'list-none'}>
-                    <li className={'mb-2'}>
-                        <label htmlFor={'username'} className={'block'}>{t('username')}</label>
-                        <input id="username" type="text" value={username}
-                               onChange={(e) => setUsername(e.target.value)}/>
-                    </li>
-                    <li className={'mb-2'}>
-                        <label htmlFor={'password'} className={'block'}>{t('password')}</label>
-                        <input id="password" type="password" value={password}
-                               onChange={(e) => setPassword(e.target.value)}/>
-                    </li>
-                    <li className={'mb-2'}>
-                        {t('not_registered')} <Link
-                        className={'underline text-indigo-500 :hover:text-indigo-300 :hover:no-underline'}
-                        to={'/register'}>{t('register_here')}</Link>
-                    </li>
-                </ul>
+                <TextInput
+                    label={'Username'}
+                    type={TextFieldType.text}
+                    id={'username'}
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                />
+                <TextInput
+                    label={'Password'}
+                    type={TextFieldType.password}
+                    id={'password'}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
 
                 {error ?
                     <Error title={error.title} message={error.message} code={error.code}/>
