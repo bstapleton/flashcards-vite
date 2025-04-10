@@ -10,6 +10,7 @@ type TextInputProps = {
     validationRule?: string;
     hint?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+    onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void
 }
 
 export default function TextInput(props: TextInputProps) {
@@ -19,6 +20,12 @@ export default function TextInput(props: TextInputProps) {
         setValue(event.target.value);
         if (props.onChange) {
             props.onChange(event);
+        }
+    };
+
+    const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+        if (props.onBlur) {
+            props.onBlur(event);
         }
     };
 
@@ -34,6 +41,7 @@ export default function TextInput(props: TextInputProps) {
                            className={styles.input}
                            value={value}
                            onChange={handleChange}
+                           onBlur={handleBlur}
                            aria-describedby={props.id + '-hint'}
                     />
                     <p id={props.id + '-hint'} className={styles.hint}>
@@ -45,6 +53,7 @@ export default function TextInput(props: TextInputProps) {
                        id={props.id}
                        value={value}
                        onChange={handleChange}
+                       onBlur={handleBlur}
                        className={styles.input}
                 />
             )}
