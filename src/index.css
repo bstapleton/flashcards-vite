@@ -30,7 +30,7 @@ main {
 }
 
 #primary-nav {
-  @apply border-b-2 border-indigo-500;
+  @apply border-b-2 border-primary;
   @apply py-2 px-4;
   @apply text-right;
 
@@ -42,10 +42,10 @@ main {
 .link {
   @apply mx-2;
   @apply p-1;
-  @apply text-indigo-500 underline;
+  @apply text-primary underline;
 
   &:hover {
-    @apply text-indigo-300 no-underline;
+    @apply text-primaryActive no-underline;
   }
 }
 
@@ -58,8 +58,8 @@ p {
 }
 
 .callout {
-  @apply border-indigo-500 border rounded-md;
-  @apply bg-indigo-700;
+  @apply border-primaryActive border rounded-md;
+  @apply bg-primary;
   @apply p-2;
 }
 

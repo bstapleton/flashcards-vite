@@ -19,7 +19,7 @@ import Authed from "./pages/Authed.tsx";
 createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <Provider store={store}>
-            <h1 className="py-2 text-center text-4xl font-bold text-indigo-500 uppercase">Flashcards</h1>
+            <h1 className="py-2 text-center text-4xl font-bold text-primary uppercase">Flashcards</h1>
             <SiteNav />
             <BrowserRouter>
                 <Routes>
