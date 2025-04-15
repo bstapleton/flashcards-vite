@@ -8,18 +8,18 @@
     header, footer, .bodyFull {
         @apply max-w-4xl;
         @apply col-span-12;
-        @apply border-b-2 border-b-indigo-500;
+        @apply border-b-2 border-b-primary;
     }
 
     header, footer, .bodyFull, .bodyL, .bodyR {
         @apply bg-zinc-800;
         @apply px-6 py-4;
-        @apply border-r-2 border-r-indigo-500;
-        @apply border-l-2 border-l-indigo-500;
+        @apply border-r-2 border-r-primary;
+        @apply border-l-2 border-l-primary;
     }
 
     header {
-        @apply rounded-tl-xl rounded-tr-xl border-t-2 border-t-indigo-500;
+        @apply rounded-tl-xl rounded-tr-xl border-t-2 border-t-primary;
         @apply text-lg;
     }
 
@@ -37,7 +37,7 @@
     }
 
     footer {
-        @apply rounded-bl-xl rounded-br-xl border-b-2 border-b-indigo-500;
+        @apply rounded-bl-xl rounded-br-xl border-b-2 border-b-primary;
     }
 
     .list {
@@ -48,7 +48,7 @@
         @apply border-collapse;
 
         th, td {
-            @apply border-2 border-indigo-500;
+            @apply border-2 border-primary;
             @apply px-4 py-2;
         }
 

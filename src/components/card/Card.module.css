@@ -17,22 +17,22 @@
     header, footer, .bodyFull, .bodyL, .bodyR {
         @apply bg-zinc-800;
         @apply px-6 py-4;
-        @apply border-l-2 border-l-indigo-500;
-        @apply border-t-2 border-t-indigo-500;
+        @apply border-l-2 border-l-primary;
+        @apply border-t-2 border-t-primary;
     }
 
     header, footer, .bodyFull, .bodyR {
-        @apply border-r-2 border-r-indigo-500;
+        @apply border-r-2 border-r-primary;
     }
 
     header {
-        @apply rounded-tl-xl rounded-tr-xl border-t-2 border-t-indigo-500;
+        @apply rounded-tl-xl rounded-tr-xl border-t-2 border-t-primary;
         @apply text-2xl;
     }
 
     footer {
-        @apply border-t-2 border-t-indigo-500;
-        @apply rounded-bl-xl rounded-br-xl border-b-2 border-b-indigo-500;
+        @apply border-t-2 border-t-primary;
+        @apply rounded-bl-xl rounded-br-xl border-b-2 border-b-primary;
 
         button {
             @apply bg-green-600 hover:bg-green-800 rounded-lg transition-colors duration-100;
