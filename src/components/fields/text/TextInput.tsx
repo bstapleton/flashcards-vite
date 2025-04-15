@@ -1,6 +1,7 @@
 import {TextFieldType} from "./TextFieldType.ts";
 import React from "react";
 import {useTranslation} from "react-i18next";
+import Hint from "../../hint/Hint.tsx";
 
 type TextInputProps = {
     value?: string;
@@ -44,9 +45,7 @@ export default function TextInput(props: TextInputProps) {
                        aria-describedby={props.hasHint ? props.id + '-hint' :  t(props.id)}
                 />
                 {props.hasHint &&
-                    <p id={props.id + '-hint'} className={'mt-2 text-sm text-gray-400 italic'}>
-                        {t(props.id + '_hint')}
-                    </p>
+                    <Hint id={props.id} />
                 }
             </>
         </div>

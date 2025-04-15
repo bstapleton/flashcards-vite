@@ -1,5 +1,6 @@
 import {useTranslation} from "react-i18next";
 import React from "react";
+import Hint from "../../hint/Hint.tsx";
 
 type TextareaProps = {
     value?: string;
@@ -35,9 +36,7 @@ export default function Textarea(props: TextareaProps) {
                        aria-describedby={props.hasHint ? props.id + '-hint' : t(props.id)}
                 />
                 {props.hasHint &&
-                    <p id={props.id + '-hint'} className={'mt-2 text-sm text-gray-400 italic'}>
-                        {t(props.id + '_hint')}
-                    </p>
+                    <Hint id={props.id} />
                 }
             </>
         </div>
