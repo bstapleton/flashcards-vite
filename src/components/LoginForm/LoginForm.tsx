@@ -69,14 +69,12 @@ const LoginForm = () => {
                     id={'username'}
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    hasHint={false}
                 />
                 <TextInput
                     type={TextFieldType.password}
                     id={'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    hasHint={false}
                 />
 
                 {error ?

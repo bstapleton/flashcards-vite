@@ -31,7 +31,7 @@ export default function Select(props: SelectProps) {
                     id={props.id}
                     className={'block w-full p-4 rounded-lg bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-primary focus:border-primary'}
                     onChange={handleChange}
-                    aria-describedby={props.hasHint ? props.id + '-hint' : ''}
+                    aria-describedby={props.hasHint ? props.id + '-hint' :  t(props.id)}
                 >
                     {props.options.map((option, index) => (
                         <option key={index} value={option}>

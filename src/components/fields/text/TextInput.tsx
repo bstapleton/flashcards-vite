@@ -41,7 +41,7 @@ export default function TextInput(props: TextInputProps) {
                        value={value}
                        onChange={handleChange}
                        onBlur={handleBlur}
-                       aria-describedby={props.hasHint ? props.id + '-hint' : ''}
+                       aria-describedby={props.hasHint ? props.id + '-hint' :  t(props.id)}
                 />
                 {props.hasHint &&
                     <p id={props.id + '-hint'} className={'mt-2 text-sm text-gray-400 italic'}>
