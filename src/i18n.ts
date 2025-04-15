@@ -112,7 +112,24 @@ i18n
                     import_count: 'Number imported',
                     remaining_count: 'Trial account questions remaining',
                     close: 'Close',
-                    results: 'Results'
+                    results: 'Results',
+                    select: {
+                        initial_state: 'Select an option',
+                        options: {
+                            orange: 'Orange',
+                            yellow: 'Yellow',
+                            green: 'Green',
+                            teal: 'Teal',
+                            cyan: 'Cyan',
+                            blue: 'Blue',
+                            indigo: 'Indigo',
+                            purple: 'Purple',
+                            pink: 'Pink',
+                            red: 'Red'
+                        }
+                    },
+                    select_a_colour: 'Select a colour',
+                    select_a_colour_hint: 'Selecting a colour for the tag will help visually differentiate between the topics you set up.'
                 }
             },
         }
