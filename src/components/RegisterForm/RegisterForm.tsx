@@ -67,23 +67,20 @@ const RegisterForm = () => {
                 {showForm ? (
                     <div>
                         <TextInput
-                            label={t('username')}
                             type={TextFieldType.text}
                             id={'username'}
-                            hint={t('username_hint')}
+                            hasHint={true}
                             onChange={(e) => setUsername(e.target.value)}
                         />
 
                         <TextInput
-                            label={t('password')}
                             type={TextFieldType.password}
                             id={'password'}
-                            hint={t('password_hint')}
+                            hasHint={true}
                             onChange={(e) => setPassword(e.target.value)}
                         />
 
                         <TextInput
-                            label={t('password_confirmation')}
                             type={TextFieldType.password}
                             id={'password_confirmation'}
                             onChange={(e) => setPasswordConfirmation(e.target.value)}
@@ -92,10 +89,9 @@ const RegisterForm = () => {
                         {passwordsMatch === false ? <span className={'block italic'}>{t('errors.password_mismatch')}</span> : null}
 
                         <TextInput
-                            label={t('display_name')}
                             type={TextFieldType.text}
                             id={'display_name'}
-                            hint={t('display_name_hint')}
+                            hasHint={true}
                             onChange={(e) => setDisplayName(e.target.value)}
                         />
 
@@ -106,7 +102,7 @@ const RegisterForm = () => {
                 ) : (
                     <div>
                         <h2>{t('successful_registration')}</h2>
-                        <p><Link to={'/login'} className={'underline text-indigo-500 :hover:text-indigo-300 :hover:no-underline'}>{t('login')}</Link></p>
+                        <p><Link to={'/login'} className={'underline text-primary :hover:text-primaryActive :hover:no-underline'}>{t('login')}</Link></p>
                     </div>
                 )}
             </div>

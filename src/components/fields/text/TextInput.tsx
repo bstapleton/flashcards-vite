@@ -1,20 +1,20 @@
-import styles from './TextInput.module.css'
 import {TextFieldType} from "./TextFieldType.ts";
 import React from "react";
+import {useTranslation} from "react-i18next";
 
 type TextInputProps = {
-    label: string;
     value?: string;
     type: TextFieldType
     id: string;
     validationRule?: string;
-    hint?: string;
+    hasHint?: boolean;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
     onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void
 }
 
 export default function TextInput(props: TextInputProps) {
     const [value, setValue] = React.useState(props.value);
+    const { t } = useTranslation();
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
@@ -30,33 +30,25 @@ export default function TextInput(props: TextInputProps) {
     };
 
     return (
-        <div className={styles.field}>
-            <label htmlFor={props.id} className={styles.label}>
-                {props.label}
+        <div className={'mb-5 md:w-full'}>
+            <label htmlFor={props.id} className={'block mb-2 text-sm font-medium text-white'}>
+                {t(props.id)}
             </label>
-            {props.hint ? (
-                <>
-                    <input type={props.type}
-                           id={props.id}
-                           className={styles.input}
-                           value={value}
-                           onChange={handleChange}
-                           onBlur={handleBlur}
-                           aria-describedby={props.id + '-hint'}
-                    />
-                    <p id={props.id + '-hint'} className={styles.hint}>
-                        {props.hint}
-                    </p>
-                </>
-            ) : (
+            <>
                 <input type={props.type}
                        id={props.id}
+                       className={'block w-full p-4 rounded-lg bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-primary focus:border-primary'}
                        value={value}
                        onChange={handleChange}
                        onBlur={handleBlur}
-                       className={styles.input}
+                       aria-describedby={props.hasHint ? props.id + '-hint' : ''}
                 />
-            )}
+                {props.hasHint &&
+                    <p id={props.id + '-hint'} className={'mt-2 text-sm text-gray-400 italic'}>
+                        {t(props.id + '_hint')}
+                    </p>
+                }
+            </>
         </div>
     )
 }

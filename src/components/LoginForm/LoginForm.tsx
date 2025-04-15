@@ -65,18 +65,18 @@ const LoginForm = () => {
             </header>
             <div className={styles.bodyFull}>
                 <TextInput
-                    label={'Username'}
                     type={TextFieldType.text}
                     id={'username'}
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
+                    hasHint={false}
                 />
                 <TextInput
-                    label={'Password'}
                     type={TextFieldType.password}
                     id={'password'}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    hasHint={false}
                 />
 
                 {error ?

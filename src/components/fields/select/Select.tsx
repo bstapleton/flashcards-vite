@@ -29,7 +29,7 @@ export default function Select(props: SelectProps) {
                 <select
                     value={value}
                     id={props.id}
-                    className={'block w-full p-4 rounded-lg bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-indigo-500 focus:border-indigo-500'}
+                    className={'block w-full p-4 rounded-lg bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-primary focus:border-primary'}
                     onChange={handleChange}
                     aria-describedby={props.hasHint ? props.id + '-hint' : ''}
                 >
